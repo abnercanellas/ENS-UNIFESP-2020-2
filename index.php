@@ -16,7 +16,7 @@
         </header>
 
         <div id="pag">
-            <form id="formLogin" method="post" action="login.php">
+            <form id="formLogin" method="POST" action="login.php">
                 <fieldset class="noBorder">
                     <legend id="legendaLogin">Painel de Login</legend>
                     <div id="conteudoForm">
