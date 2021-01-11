@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
     <head>
         <title>Login - Escalas</title>
@@ -10,7 +13,7 @@
                 <div>Sistema de Escalas</div>
             </div>
             <div id="logoFoto"><!-- logo e foto -->
-                <img src="imgs/txtNomeUnifesp.png" alt="avatar">
+                <img src="imgs/txtNomeUnifesp.png" alt="UNIFESP">
             </div>
             <span style="clear: both;"></span>
         </header>
@@ -28,6 +31,16 @@
                             <label for="senhaId">Senha: </label>
                             <input id="senhaId" name="senha" type="password" placeholder="Senha">
                         </div>
+                        <?php
+                            if(isset($_SESSION['n_autenticado'])):
+                        ?>    
+                            <div class="formGrup, error">
+                                <span>Verifique seu login e Senha</span>
+                            </div>
+                        <?php
+                            endif;
+                            unset($_SESSION['n_autenticado']);
+                        ?> 
                         <div class="formGroupo" align="right">
                             <div>
                                 <input  class="botaoEnviar" type="submit" name="enviar" value="Login">
@@ -37,6 +50,7 @@
                 </fieldset>
             </form>
         </div>
+
     </body>
 </html>
 
