@@ -2,7 +2,14 @@
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "header.php";
    include_once("header.php");
-   include('verifyAuthentication.php')
+   include('verifyAuthentication.php');
+   
+   $required_level = 1; //diretoria
+   if($_SESSION['tipoUserId'] != $required_level) {
+      session_destroy();
+      header("Location: index.php");
+      exit;
+   }
 ?>
 
 <html>
