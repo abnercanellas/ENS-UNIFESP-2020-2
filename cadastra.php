@@ -7,7 +7,7 @@
 
 <html>
     <head>
-        <title>Home - Escalas</title>
+        <title>Cadastra - Escalas</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles/styles.css">
     </head>
