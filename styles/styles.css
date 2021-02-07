@@ -73,7 +73,7 @@ header{
     overflow: auto;
 }
 #conteudo{
-    width: 100%;
+    width: auto;
     padding: 10px;
     background-color: #f8f8f8;
     /* border: 1px darkgreen solid; */
@@ -109,6 +109,9 @@ header{
     line-height: 30px;
     text-align: center;
     border: 1px solid transparent;
+}
+.divs{
+    display: none;
 }
 .pagAtual a{
     font-size: 123px;
