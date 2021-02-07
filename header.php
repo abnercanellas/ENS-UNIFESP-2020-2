@@ -2,44 +2,6 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles/styles.css">
-        <script>
-                var set= function(N,M){
-                    var x = document.getElementById(N);
-                    var d = document.getElementById(M);
-                    x.style.textAlign = "right";
-                    x.style.fontWeight = "bolder";
-                    x.style.borderColor = "#4cae4c";
-                    x.style.borderWidth =" 2px";
-                }  
-                var reset = function(N,M){
-                    var x = document.getElementById(N);
-                    var d = document.getElementById(M);
-                    x.style.textAlign = "left";
-                    x.style.fontWeight = "normal";
-                    x.style.borderColor = "#333";
-                    x.style.borderWidth = "1px";
-                }
-                var animaMenu = function(div){
-                    reset('lEscala','dEscala');
-                    reset('lConsulta','dConsulta');
-                    reset('lCadastra','dCadastra');
-                    reset('lHistorico','dHistorico');       
-                    switch(div){
-                        case 'dEscala':
-                            set('lEscala','dEscala');
-                        break;
-                        case 'dConsulta':
-                            set('lConsulta','dConsulta');
-                        break;
-                        case 'dCadastra':
-                            set('lCadastra','dCadastra');
-                        break;
-                        case 'dHistorico':
-                            set('lHistorico','dHistorico');
-                        break;
-                    }
-                }
-            </script>
     </head>
     <body>
         <header><!--menu superior -->

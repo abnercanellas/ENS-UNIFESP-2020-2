@@ -6,9 +6,10 @@
    
    $required_level = 1; //diretoria
    if($_SESSION['tipoUserId'] != $required_level) {
-      session_destroy();
-      header("Location: index.php");
-      exit;
+        echo '<script>
+                alert("ACESSO NEGADO\nVocê não possui o cargo necessário para acessar essa função");
+                window.location.href="home.php";
+            </script>'; 
    }
 ?>
 

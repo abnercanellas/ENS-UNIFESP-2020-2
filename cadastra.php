@@ -7,9 +7,11 @@
    
    $required_level = 1; //diretoria
    if($_SESSION['tipoUserId'] != $required_level) {
-      session_destroy();
-      header("Location: index.php");
-      exit;
+        echo '<script>
+                alert("ACESSO NEGADO\nVocê não possui o cargo necessário para acessar essa função");
+                window.location.href="home.php";
+            </script>';
+        
    }
 ?>
 
@@ -39,6 +41,7 @@
                     <form action="addFunc.php" method="POST">
                         <div id="tipoCadastro"> <!-- escolhe o tipo de cadastroa realizar -->
                             <select name="sTipoCadastro" id="idsTipoCadastro" onchange="selectCheck()">
+                                <option >---Selecione aqui---</option>
                                 <option value="0">Usuário</option>
                                 <option value="1">Tipo de usuário</option>
                                 <option value="2">Setor</option>
@@ -54,6 +57,12 @@
                                 
                                 <label for="iCpf">CPF (ou RNE): </label>
                                 <input id="idCpf" name="iCpf" type="text" placeholder="00011122233"><br>
+
+                                <label for="ilogin">Login: </label>
+                                <input id="idlogin" name="ilogin" type="text" placeholder="FulanoSilva"><br>
+                                
+                                <label for="iSenha">Senha: </label>
+                                <input id="idSenha" name="iSenha" type="password" placeholder="senha"><br>
                                 
                                 <label for="sTipoUsuario">Tipo de usuário: </label> <!-- select tipousuario -->
                                 <select name="sTipoUsuario" id="idsTipoUsuario">
