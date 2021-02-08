@@ -46,7 +46,7 @@
             <div id="conteudo"><!-- conteudo -->
                 <div id="dCadastra">
                     <form class="m-0" action="addFunc.php" method="POST">
-                        <legend class="mt-3">Cadastro de:</legend>
+                        <legend>Cadastro de:</legend>
                         <div id="tipoCadastro"> <!-- escolhe o tipo de cadastro a realizar -->
                             <select class="form-select my-3" name="sTipoCadastro" id="idsTipoCadastro" onchange="selectCheck()">
                                 <option selected>Selecione aqui</option>

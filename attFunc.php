@@ -1,5 +1,6 @@
 <?php
-include('connection.php');
+
+include_once("connection.php");
 
 $TipoCadastro = mysqli_real_escape_string($connection, $_POST['sTipoConsulta']);
 
@@ -9,42 +10,54 @@ function alert($msg, $page) {
             window.location.href='$page';
         </script>");
 }
+?>
 
-    /* $ID = mysqli_real_escape_string($connection, $_POST['iCpf']);
-    $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
-    $Login = mysqli_real_escape_string($connection, $_POST['ilogin']);
-    $Senha = mysqli_real_escape_string($connection, $_POST['iSenha']);
-    $TipoUsuario= mysqli_real_escape_string($connection, $_POST['sTipoUsuario']);
-    $Setor= mysqli_real_escape_string($connection, $_POST['sSetor']);
-    $Escala= mysqli_real_escape_string($connection, $_POST['sTipoFerias']);
-    $Ferias= mysqli_real_escape_string($connection, $_POST['sTipoEscala']); */
+<html>
+    <head>
 
-switch ($TipoCadastro) {
-    case '0': //Funcionario
-        $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
+    </head>
+    <body>
+        <?php
 
-        $query = "SELECT * FROM `Funcionario` WHERE Nome = '{$Nome}'";
+            /* $ID = mysqli_real_escape_string($connection, $_POST['iCpf']);
+            $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
+            $Login = mysqli_real_escape_string($connection, $_POST['ilogin']);
+            $Senha = mysqli_real_escape_string($connection, $_POST['iSenha']);
+            $TipoUsuario= mysqli_real_escape_string($connection, $_POST['sTipoUsuario']);
+            $Setor= mysqli_real_escape_string($connection, $_POST['sSetor']);
+            $Escala= mysqli_real_escape_string($connection, $_POST['sTipoFerias']);
+            $Ferias= mysqli_real_escape_string($connection, $_POST['sTipoEscala']); */
 
-        $s=mysqli_query($connection,$query);
-            while($r = mysqli_fetch_array($s)){
-                echo '<p>'.$r['Nome'].' '.$r['TipoUsuarioID'].' '.$r['SetorID'].' '.$r['TipoEscalaID'].' '.$r['TipoFeriasID'].'</p>';
-        }
+            switch ($TipoCadastro) {
+                case '0': //Funcionario
+                    $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
+            
+                    $query = "SELECT * FROM `Funcionario` WHERE Nome = '{$Nome}'";
+            
+                    $s=mysqli_query($connection,$query);
+                        while($r = mysqli_fetch_array($s)){
+                            echo '<p>'.$r['Nome'].' '.$r['TipoUsuarioID'].' '.$r['SetorID'].' '.$r['TipoEscalaID'].' '.$r['TipoFeriasID'].'</p>';
+                    }
+                    header("Location: consulta.php");
+                    break;
+            
+                case '1': //TipoUsuario
+                    
+                    break;
+            
+                case '2': //Setor
+                    
+                    break;
+            
+                case '3': //TipoPresenca
+                    
+                    break;
+                
+                default:
+                    
+                    break;
+            }
 
-        break;
-
-    case '1': //TipoUsuario
-        
-        break;
-
-    case '2': //Setor
-        
-        break;
-
-    case '3': //TipoPresenca
-        
-        break;
-    
-    default:
-        
-        break;
-}
+        ?> 
+    </body>
+</html>

@@ -94,7 +94,7 @@
                             <input class="btn btn-secondary mt-3" type="submit"  value="Consultar" name="formConsulta" id="idformConsulta" style="display: none">
                         </div>
                     </form>
-                
+                    <?php if(isset($_POST['sTipoConsulta']))include_once("attFunc.php"); ?>
                 </div>
             </div>
             <span class="clear"></span>
