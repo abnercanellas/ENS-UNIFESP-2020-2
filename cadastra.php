@@ -17,14 +17,19 @@
 
 <html>
     <head>
-        <title>Cadastra - Escalas</title>
+        <title>Cadastros - Escalas</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles/styles.css">
 
         <script>
             function selectCheck(){
-                document.getElementById("idformCadastra").style.display = "Block";
+                // document.getElementById("idformCadastra").style.display = "Block";
                 var x = document.getElementById("idsTipoCadastro").value;
+                if (x >= 0) {
+                    document.getElementById("idformCadastra").style.display = "Block";    
+                } else {
+                    document.getElementById("idformCadastra").style.display = "none";
+                }                
                 var myDiv = document.getElementsByClassName("divs");
                 for (i = 0; i < myDiv.length; i++) {
                     myDiv[i].style.display = "none";
@@ -39,9 +44,9 @@
             <div id="conteudo"><!-- conteudo -->
                 <div id="dCadastra">
                     <form action="addFunc.php" method="POST">
-                        <div id="tipoCadastro"> <!-- escolhe o tipo de cadastroa realizar -->
+                        <div id="tipoCadastro"> <!-- escolhe o tipo de cadastro a realizar -->
                             <select name="sTipoCadastro" id="idsTipoCadastro" onchange="selectCheck()">
-                                <option >---Selecione aqui---</option>
+                                <option>---Selecione aqui---</option>
                                 <option value="0">Usuário</option>
                                 <option value="1">Tipo de usuário</option>
                                 <option value="2">Setor</option>
@@ -66,7 +71,7 @@
                                 
                                 <label for="sTipoUsuario">Tipo de usuário: </label> <!-- select tipousuario -->
                                 <select name="sTipoUsuario" id="idsTipoUsuario">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `tipousuario`");
+                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoUsuario`");
                                         while($r = mysqli_fetch_array($s)){ ?>
                                             <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
                                     <?php } ?>
@@ -74,7 +79,7 @@
 
                                 <label for="sSetor">Setor: </label> <!-- select setor -->
                                 <select name="sSetor" id="idsSetor">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `setor`");
+                                    <?php $s=mysqli_query($connection,"SELECT * FROM `Setor`");
                                         while($r = mysqli_fetch_array($s)){ ?>
                                             <option value="<?php echo $r['ID']?>"><?php echo $r['Nome'];?></option>
                                     <?php } ?>
@@ -82,7 +87,7 @@
 
                                 <label for="sTipoFerias">Tipo de férias: </label> <!-- select tipoferias -->
                                 <select name="sTipoFerias" id="idsTipoFerias"> 
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `tipoferias`");
+                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoFerias`");
                                         while($r = mysqli_fetch_array($s)){ ?>
                                             <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
                                     <?php } ?>
@@ -90,7 +95,7 @@
                                 
                                 <label for="sTipoEscala">Tipo de escala: </label> <!-- select tipoescala -->
                                 <select name="sTipoEscala" id="idsTipoEscala">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `tipoescala`");
+                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoEscala`");
                                         while($r = mysqli_fetch_array($s)){ ?>
                                             <option value="<?php echo $r['ID']?>"><?php echo $r['TipoEscala'];?></option>
                                     <?php } ?>

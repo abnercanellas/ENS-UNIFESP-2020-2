@@ -4,6 +4,13 @@ include('connection.php');
 
 $TipoCadastro = mysqli_real_escape_string($connection, $_POST['sTipoCadastro']);
 
+function alert($msg) {
+    echo ("<script LANGUAGE='JavaScript'>
+            window.alert('$msg');
+            window.location.href='home.php';
+        </script>");
+}
+
 switch ($TipoCadastro) {
     case '0':
         $ID = mysqli_real_escape_string($connection, $_POST['iCpf']);
@@ -14,23 +21,38 @@ switch ($TipoCadastro) {
         $Setor= mysqli_real_escape_string($connection, $_POST['sSetor']);
         $Escala= mysqli_real_escape_string($connection, $_POST['sTipoFerias']);
         $Ferias= mysqli_real_escape_string($connection, $_POST['sTipoEscala']);
-                /* INSERT INTO `funcionario` (`ID`, `Nome`, `Login`, `Senha`, `TipoUsuarioID`, `SetorID`, `TipoEscalaID`, `TipoFeriasID`) VALUES ('0', 'Administrador', 'admin', 'admin', '1', '331', '1', '2') */
-        $query = "INSERT INTO `funcionario` (`ID`, `Nome`, `Login`, `Senha`, `TipoUsuarioID`, `SetorID`, `TipoEscalaID`, `TipoFeriasID`) VALUES ('{$ID}', '{$Nome}', '{$Login}', md5('{$Senha}'), '{$TipoUsuario}', '{$Setor}', '{$Escala}', '{$Ferias}')";
+                /* INSERT INTO `Funcionario` (`ID`, `Nome`, `Login`, `Senha`, `TipoUsuarioID`, `SetorID`, `TipoEscalaID`, `TipoFeriasID`) VALUES ('0', 'Administrador', 'admin', 'admin', '1', '331', '1', '2') */
+        $query = "INSERT INTO `Funcionario` (`ID`, `Nome`, `Login`, `Senha`, `TipoUsuarioID`, `SetorID`, `TipoEscalaID`, `TipoFeriasID`) VALUES ('{$ID}', '{$Nome}', '{$Login}', md5('{$Senha}'), '{$TipoUsuario}', '{$Setor}', '{$Escala}', '{$Ferias}')";
         
         $result = mysqli_query($connection, $query);
 
-        echo "<script>alert('{$result}'); </script>";
-
-        header('location: home.php');
+        alert($result);
         break;
     case '1':
-    
+        $Tipo = mysqli_real_escape_string($connection, $_POST['iTipoUsuario']);
+        $query = "INSERT INTO `TipoUsuario` (`Tipo`) VALUES ('{$Tipo}')";
+        
+        $result = mysqli_query($connection, $query);
+
+        alert($result);
         break;
     case '2':
-    
+        $NomeSetor = mysqli_real_escape_string($connection, $_POST['iSetor']);
+        $CodSetor = mysqli_real_escape_string($connection, $_POST['iCodigoSetor']);
+        $query = "INSERT INTO `Setor` (`ID`, `Nome`) VALUES ('{$CodSetor}', '{$NomeSetor}')";
+        
+        $result = mysqli_query($connection, $query);
+
+        alert($result);
         break;
     case '3':
+        $TipoPresenca = mysqli_real_escape_string($connection, $_POST['iPresenca']);
+        $CodPresenca = mysqli_real_escape_string($connection, $_POST['iCodigoPresenca']);
+        $query = "INSERT INTO `TipoPresenca` (`ID`, `Tipo`) VALUES ('{$CodPresenca}', '{$TipoPresenca}')";
+        
+        $result = mysqli_query($connection, $query);
 
+        alert($result);
         break;
     default:
         
