@@ -16,6 +16,7 @@
 ?>
 
 <html>
+
     <head>
         <title>Cadastros - Escalas</title>
         <meta charset="UTF-8">
@@ -39,90 +40,126 @@
             }
         </script>
     </head>
+
     <body>
         <div id="pag">
             <div id="conteudo"><!-- conteudo -->
                 <div id="dCadastra">
-                    <form action="addFunc.php" method="POST">
+                    <form class="m-0" action="addFunc.php" method="POST">
+                        <legend class="mt-3">Cadastro de:</legend>
                         <div id="tipoCadastro"> <!-- escolhe o tipo de cadastro a realizar -->
-                            <select name="sTipoCadastro" id="idsTipoCadastro" onchange="selectCheck()">
-                                <option>---Selecione aqui---</option>
+                            <select class="form-select my-3" name="sTipoCadastro" id="idsTipoCadastro" onchange="selectCheck()">
+                                <option selected>Selecione aqui</option>
                                 <option value="0">Usuário</option>
                                 <option value="1">Tipo de usuário</option>
                                 <option value="2">Setor</option>
                                 <option value="3">Tipo de Presença</option>
                             </select>
-
                         </div>
 
                         <div> <!-- cadastros -->
                             <div id="0" class="divs"> <!-- cadastra usuario  -->
-                                <label for="iNomeUsuario">Nome completo: </label>
-                                <input id="idNomeUsuario" name="iNomeUsuario" type="text" placeholder="Fulano Silva"><br>
+                                <hr class="mb-5">           
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text"  for="iNomeUsuario">Nome Completo: </label>
+                                    <input class="form-control" id="idNomeUsuario" name="iNomeUsuario" type="text" placeholder="Fulano Silva">
+                                </div>
                                 
-                                <label for="iCpf">CPF (ou RNE): </label>
-                                <input id="idCpf" name="iCpf" type="text" placeholder="00011122233"><br>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iCpf">CPF (ou RNE): </label>
+                                    <input class="form-control" id="idCpf" name="iCpf" type="text" placeholder="00011122233">
+                                </div>
 
-                                <label for="ilogin">Login: </label>
-                                <input id="idlogin" name="ilogin" type="text" placeholder="FulanoSilva"><br>
-                                
-                                <label for="iSenha">Senha: </label>
-                                <input id="idSenha" name="iSenha" type="password" placeholder="senha"><br>
-                                
-                                <label for="sTipoUsuario">Tipo de usuário: </label> <!-- select tipousuario -->
-                                <select name="sTipoUsuario" id="idsTipoUsuario">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoUsuario`");
-                                        while($r = mysqli_fetch_array($s)){ ?>
-                                            <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
-                                    <?php } ?>
-                                </select><br>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="ilogin">Login: </label>
+                                    <input class="form-control" id="idlogin" name="ilogin" type="text" placeholder="FulanoSilva">
+                                </div>
 
-                                <label for="sSetor">Setor: </label> <!-- select setor -->
-                                <select name="sSetor" id="idsSetor">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `Setor`");
-                                        while($r = mysqli_fetch_array($s)){ ?>
-                                            <option value="<?php echo $r['ID']?>"><?php echo $r['Nome'];?></option>
-                                    <?php } ?>
-                                </select><br>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iSenha">Senha: </label>
+                                    <input class="form-control" id="idSenha" name="iSenha" type="password" placeholder="senha">
+                                </div>
 
-                                <label for="sTipoFerias">Tipo de férias: </label> <!-- select tipoferias -->
-                                <select name="sTipoFerias" id="idsTipoFerias"> 
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoFerias`");
-                                        while($r = mysqli_fetch_array($s)){ ?>
-                                            <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
-                                    <?php } ?>
-                                </select><br>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="sTipoUsuario">Tipo de usuário: </label> <!-- select tipousuario -->
+                                    <select class="form-select" name="sTipoUsuario" id="idsTipoUsuario">
+                                        <?php $s=mysqli_query($connection,"SELECT * FROM `TipoUsuario`");
+                                            while($r = mysqli_fetch_array($s)){ ?>
+                                                <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="sSetor">Setor: </label> <!-- select setor -->
+                                    <select class="form-select" name="sSetor" id="idsSetor">
+                                        <?php $s=mysqli_query($connection,"SELECT * FROM `Setor`");
+                                            while($r = mysqli_fetch_array($s)){ ?>
+                                                <option value="<?php echo $r['ID']?>"><?php echo $r['Nome'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                <label class="input-group-text" for="sTipoFerias">Tipo de férias: </label> <!-- select tipoferias -->
+                                    <select class="form-select" name="sTipoFerias" id="idsTipoFerias"> 
+                                        <?php $s=mysqli_query($connection,"SELECT * FROM `TipoFerias`");
+                                            while($r = mysqli_fetch_array($s)){ ?>
+                                                <option value="<?php echo $r['ID']?>"><?php echo $r['Tipo'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
                                 
-                                <label for="sTipoEscala">Tipo de escala: </label> <!-- select tipoescala -->
-                                <select name="sTipoEscala" id="idsTipoEscala">
-                                    <?php $s=mysqli_query($connection,"SELECT * FROM `TipoEscala`");
-                                        while($r = mysqli_fetch_array($s)){ ?>
-                                            <option value="<?php echo $r['ID']?>"><?php echo $r['TipoEscala'];?></option>
-                                    <?php } ?>
-                                </select>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="sTipoEscala">Tipo de escala: </label> <!-- select tipoescala -->
+                                    <select class="form-select" name="sTipoEscala" id="idsTipoEscala">
+                                        <?php $s=mysqli_query($connection,"SELECT * FROM `TipoEscala`");
+                                            while($r = mysqli_fetch_array($s)){ ?>
+                                                <option value="<?php echo $r['ID']?>"><?php echo $r['TipoEscala'];?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>                     
+                                <hr class="mt-5">           
                             </div>
 
-                            <div id="1" class="divs">
-                                <label for="iTipoUsuario">Tipo de usuário: </label> <!-- cadastra tipousuario -->
-                                <input id="idTipoUsuario" name="iTipoUsuario" type="text" placeholder="Diretoria"><br>
+                            <div id="1" class="divs mt-5">
+                                <hr class="mb-5">           
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iTipoUsuario">Tipo de usuário: </label> <!-- cadastra tipousuario -->
+                                    <input class="form-control" id="idTipoUsuario" name="iTipoUsuario" type="text" placeholder="Diretoria">
+                                </div>
+                                <hr class="mt-5">
                             </div>
 
-                            <div id="2" class="divs">
-                                <label for="iSetor">Nome do setor: </label> <!-- cadastra setor -->
-                                <input id="idiSetor" name="iSetor" type="text" placeholder="Administração"><br>
-                                <label for="iCodigoSetor">Código do setor: </label>
-                                <input id="idiCodigoSetor" name="iCodigoSetor" type="text" placeholder="3214"><br>
+                            <div id="2" class="divs mt-5">
+                                <hr class="mb-5">      
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iSetor">Nome do setor: </label> <!-- cadastra setor -->
+                                    <input class="form-control" id="idiSetor" name="iSetor" type="text" placeholder="Administração">
+                                </div>     
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iCodigoSetor">Código do setor: </label>
+                                    <input class="form-control" id="idiCodigoSetor" name="iCodigoSetor" type="text" placeholder="3214">
+                                </div>
+                                <hr class="mt-5">
                             </div>
 
-                            <div id="3" class="divs">
-                                <label for="iPresenca">Tipo da presença: </label> <!-- cadastra presenca -->
-                                <input id="idiPresenca" name="iPresenca" type="text" placeholder="Falta com laudo médico"><br>
-                                <label for="iCodigoPresenca">Código da presença: </label>
-                                <input id="idiCodigoPresenca" name="iCodigoPresenca" type="text" placeholder="3"><br>
+                            <div id="3" class="divs mt-5">
+                                <hr class="mb-5">         
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iPresenca">Tipo da presença: </label> <!-- cadastra presenca -->
+                                    <input class="form-control" id="idiPresenca" name="iPresenca" type="text" placeholder="Falta com laudo médico">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="iCodigoPresenca">Código da presença: </label>
+                                    <input class="form-control" id="idiCodigoPresenca" name="iCodigoPresenca" type="text" placeholder="3">
+                                </div>  
+                                <hr class="mt-5">
                             </div>
-                        </div>      
-
-                        <input type="submit" value="Cadastrar" name="formCadastra" id="idformCadastra" style="display: none;">                  
+                        </div>     
+                        <div class="d-grid d-md-flex justify-content-md-end">
+                            <input class="btn btn-secondary mt-3" type="submit"  value="Cadastrar" name="formCadastra" id="idformCadastra" style="display: none">
+                        </div>
                     </form>
                 </div>
             </div>

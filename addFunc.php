@@ -39,7 +39,7 @@ switch ($TipoCadastro) {
         else{
             $query = "INSERT INTO `Funcionario` (`ID`, `Nome`, `Login`, `Senha`, `TipoUsuarioID`, `SetorID`, `TipoEscalaID`, `TipoFeriasID`) VALUES ('{$ID}', '{$Nome}', '{$Login}', md5('{$Senha}'), '{$TipoUsuario}', '{$Setor}', '{$Escala}', '{$Ferias}')";  
             $result = mysqli_query($connection, $query);
-            alert($result, 'home.php');
+            alert($Nome.' cadastrado.\nLogin: '.$Login.'\nSenha:'.$Senha, 'home.php');
         }
         break;
 
@@ -54,7 +54,7 @@ switch ($TipoCadastro) {
         } else {
             $query = "INSERT INTO `TipoUsuario` (`Tipo`) VALUES ('{$Tipo}')";
             $result = mysqli_query($connection, $query);
-            alert($result, 'home.php');
+            alert($Tipo.' cadastrado.', 'home.php');
         }
         break;
 
@@ -70,7 +70,7 @@ switch ($TipoCadastro) {
         } else {
             $query = "INSERT INTO `Setor` (`ID`, `Nome`) VALUES ('{$CodSetor}', '{$NomeSetor}')";
             $result = mysqli_query($connection, $query);
-            alert($result, 'home.php');
+            alert($Setor.' cadastrado.', 'home.php');
         }
         break;
 
@@ -86,7 +86,7 @@ switch ($TipoCadastro) {
         } else {
             $query = "INSERT INTO `TipoPresenca` (`ID`, `Tipo`) VALUES ('{$CodPresenca}', '{$TipoPresenca}')";
             $result = mysqli_query($connection, $query);
-            alert($result, 'home.php');
+            alert($TipoPresenca.' cadastrado.', 'home.php');
         }
         break;
     
@@ -94,19 +94,3 @@ switch ($TipoCadastro) {
         
         break;
 }
-/* $password = mysqli_real_escape_string($connection, $_POST['senha']);
-
-$query = "SELECT id, Login FROM `usuario` WHERE Login = '{$username}' AND Senha = md5('{$password}')";
-echo $query;
-$result = mysqli_query($connection, $query);
-$row = mysqli_num_rows($result);
-
-if($row==1){
-    $_SESSION['usuario'] = $username; 
-    header('location: home.php');
-    exit();
-}else{
-    $_SESSION['n_autenticado'] = true;
-    header('Location: index.php');
-}
- */
