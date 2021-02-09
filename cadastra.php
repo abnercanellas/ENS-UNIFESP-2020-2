@@ -66,7 +66,7 @@
                                 </div>
                                 
                                 <div class="input-group mb-3">
-                                    <label class="input-group-text" for="iCpf">CPF (ou RNE): </label>
+                                    <label class="input-group-text" for="iCpf">CPF (ou COREN): </label>
                                     <input class="form-control" id="idCpf" name="iCpf" type="text" placeholder="00011122233">
                                 </div>
 

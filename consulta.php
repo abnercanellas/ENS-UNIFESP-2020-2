@@ -30,7 +30,7 @@
         <div id="pag">
             <div id="conteudo"><!-- conteudo -->
                 <div id="dConsulta">
-                    <form class="m-0" action="attFunc.php" method="POST">
+                    <form class="m-0" action="" method="POST">
                             <legend>Consulta: </legend>
                             
                             <div id="tipoConsulta"> <!-- escolhe o tipo de cadastro a realizar -->
@@ -94,7 +94,7 @@
                             <input class="btn btn-secondary mt-3" type="submit"  value="Consultar" name="formConsulta" id="idformConsulta" style="display: none">
                         </div>
                     </form>
-                    <?php if(isset($_POST['sTipoConsulta']))include_once("attFunc.php"); ?>
+                    <?php require_once('attFunc.php')?>
                 </div>
             </div>
             <span class="clear"></span>
