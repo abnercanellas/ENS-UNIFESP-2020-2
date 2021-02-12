@@ -1,5 +1,9 @@
 USE insertion;
 
+INSERT INTO Acesso (Id, Tipo) VALUES (1, 'Total');
+INSERT INTO Acesso (Id, Tipo) VALUES (2, 'Chamada e consulta');
+INSERT INTO Acesso (Id, Tipo) VALUES (3, 'Apenas consulta');
+
 INSERT INTO Vinculo (Vinc) VALUES ('SPDM');
 
 INSERT INTO Categoria (Cat, Sigla) VALUES ('Enfermeiro(a)', 'ENF');

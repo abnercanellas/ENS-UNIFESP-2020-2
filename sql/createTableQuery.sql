@@ -1,6 +1,11 @@
 CREATE DATABASE insertion;
 USE insertion;
 
+CREATE TABLE Acesso(
+Id integer(10),
+Tipo varchar(255) NOT NULL UNIQUE,
+PRIMARY KEY (Id));
+
 CREATE TABLE Vinculo(
 Id integer(10) AUTO_INCREMENT,
 Vinc varchar(255) NOT NULL UNIQUE,
