@@ -111,7 +111,9 @@ HoraFim time(6),
 TipoPresencaId integer(10),
 EscalasId integer(10),
 UsuarioId varchar(11),
+SetorId integer(10),
 PRIMARY KEY (Id),
 FOREIGN KEY (TipoPresencaId) REFERENCES TipoPresenca (Id),
 FOREIGN KEY (EscalasId) REFERENCES Escalas (Id),
-FOREIGN KEY (UsuarioId) REFERENCES Usuario (Cpf));
+FOREIGN KEY (UsuarioId) REFERENCES Usuario (Cpf),
+FOREIGN KEY (SetorId) REFERENCES Setor (Id));
