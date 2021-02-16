@@ -9,6 +9,7 @@
 <html>
     <head>
         <title>Consulta - Escalas</title>
+	<link rel="stylesheet" href="styles/stylesConsu.css">
         <script>
             function selectCheck(){
                 var x = document.getElementById("idsTipoConsulta").value;
@@ -204,7 +205,9 @@
                             <input class="btn btn-secondary mt-3" type="submit"  value="Consultar" name="formConsulta" id="idformConsulta" style="display: none">
                         </div>
                     </form>
-                    <?php require_once('attFunc.php')?>
+		<ul>
+		<?php require_once('attFunc.php')?>
+		</ul>
                 </div>
             </div>
             <span class="clear"></span>

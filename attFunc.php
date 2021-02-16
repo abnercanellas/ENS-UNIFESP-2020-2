@@ -17,7 +17,23 @@ function gather($connection,$query){
             $tipoS = mysqli_fetch_array(mysqli_query($connection,"SELECT Nome  FROM `Setor`       WHERE `Id` = {$r['SetorId']}"))['Nome'];
             $tipoE = mysqli_fetch_array(mysqli_query($connection,"SELECT Tipo  FROM `TipoEscala`  WHERE `Id` = {$r['TipoEscalaId']}"))['Tipo'];
             $tipoF = mysqli_fetch_array(mysqli_query($connection,"SELECT Nome  FROM `TipoFerias`  WHERE `Id` = {$r['TipoFeriasId']}"))['Nome'];
-            echo '<p>Nome: '.$r['Nome'].' <br> -  CPF(CRNM): '.$r['Cpf'].'<br> -  RF/RE: '.$r['RfRe'].'<br> -  COREN: '.$r['Coren'].'<br> -  Vínculo: '.$vinc.'<br> -  Categoria: '.$cat.'<br> -  Tipo de usuário: '.$tipoU.'<br> -  Condição: '.$cond.'<br> -  Setor: '.$tipoS.'<br> -  Escala: '.$tipoE.'<br> -  Férias: '.$tipoF.'.</p>';
+            echo '
+
+<li>
+'.$r['Nome'].'
+<ul>
+	<li>CPF(CRNM): '.$r['Cpf'].'</li>
+	<li>RF/RE: '.$r['RfRe'].'</li>
+	<li>COREN: '.$r['Coren'].'</li>
+	<li>Vínculo: '.$vinc.'</li>
+	<li>Categoria: '.$cat.'</li>
+	<li>Tipo de usuário: '.$tipoU.'</li>
+	<li>Condição: '.$cond.'</li>
+	<li>Setor: '.$tipoS.'</li>
+	<li>Escala: '.$tipoE.'</li>
+	<li>Férias: '.$tipoF.'</li>
+</ul>
+</li>';
         }
     }else{
         echo "nenhuma correspondencia encontrada";
