@@ -24,7 +24,7 @@
                     <div id="conteudo"><!-- conteudo -->
                         <div id="dEscala">
 			    <?php
-                            $query="SELECT c.ano, c.mes, c.dia, c.HoraInicio, c.HoraFim FROM celula c WHERE c.UsuarioId='{$_SESSION['usuario']}'";
+                            $query="SELECT c.ano, c.mes, c.dia, c.HoraInicio, c.HoraFim FROM celula c WHERE c.UsuarioId='{$_SESSION['usuario']}' ORDER BY c.ano, c.mes, c.dia";
 			    $s = mysqli_query($connection, $query) or die(mysqli_error($connection));                                
                                 while($r=mysqli_fetch_array($s)){
 				                    $ano=$r['ano'];
