@@ -1,175 +1,41 @@
-html {
-    font-family: sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
-body {
-    margin: 0;
-    line-height: 1.42857143;
-    color: #333;
-}
 header{
-    position: 0;
-    background-color: #f8f8f8;
-    min-width: 800px;
-    border-color: #e7e7e7;
-    font-size: 30px;
-    border-bottom: 1px;
-    height: 70px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
+    min-width: 600px;
 }
 
-
-#navegacao{
-    float: left;
-    margin-left: 30px;
-    line-height: 70px;
+.bg-a0{
+    background-color: #FBF8F1;
 }
-#navegacao a{
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bolder;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #333;
-    margin-left: 10px;
-    text-decoration: none;
+.bg-a1{
+    background-color: #E6EAE9;
 }
-#navegacao a:hover{
-    font-size: 19px;
+.bg-a2{
+    background-color: #C4CCCF;
 }
-#navegacao a.pagAtual{
-    color: #4cae4c;
+.bg-a3{
+    background-color: #A7C2D3;
 }
-#avatar{
-    cursor: pointer;
-    float: right;
-    margin: 20px;
-    width:  30px;
-    height: 30px;
+.bg-a4{
+    background-color: #92A1A6;
 }
-#avatar:hover{
-    cursor: pointer;
-    float: right;
-    margin: 15px;
-    width:  40px;
-    height: 40px;
-    transition: 80ms;
-}
-#logoFoto{
-    float: right;
-}
-#logoFoto img{
-    max-height: 50px;
-    margin: 10px 15px;
-}
-#pag{
-    width: 980px;
-    min-height: 75vh;
-    margin: 0 auto;
-    padding-bottom: 80px;
-    /* border: 1px darkgreen solid; */
-    overflow: auto;
-}
-#conteudo{
-    width: auto;
-    padding: 10px 20px; 
-    background-color: #f8f8f8;
-    /* border: 1px darkgreen solid; */
-}
-#formLogin{
-    width: 600px;
-    height: 280px;
-    padding: 10px;
-    margin: 0 auto;
-    margin-top: 10vh;
-    background: #f7f7f7;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-#legendaLogin{
-    border-bottom: 1px #ccc solid;
-    margin-bottom: 20px;
-    width: 100%;
-}
-#conteudoForm{
-    width: 400px;
-    margin: 0 auto;
-}
-#rodape{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(233, 233, 233);
-    border-color: #e7e7e7;
-    font-size: 12px;
-    border-top: 1px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border: 1px solid transparent;
+.bg-a5{
+    background-color: #6C8693;
 }
 .divs{
     display: none;
 }
-.pagAtual a{
-    font-size: 123px;
-    background-color: #4cae4c;
+.icos{
+    color:#6C8693 ;
 }
 
-.formGrupo{
-    line-height: 35px;
-    font-size: 18px;
-    font-weight: bolder;
-    margin: 20px 0;
-}
-.formGrupo label{
-    width: 30%;
-    margin-right: 10px;
-    text-align: right;
-    float: left;
-}
-.formGrupo input{
-    width: 60%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.botaoEnviar{
-    cursor: pointer;
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    font: inherit;
-}
 
-.error{
-    width: 60%;
-    color: red;
-    margin: 0 auto;
+#menu{
+    padding-top: 80px;
+    width: 180px;
+    min-height: 100vh;
 }
-.noBorder{
-    border: 0px;
-    margin: 5px;
-}
-.noBorder legend{
-    font-size: 25px;
-}
-.noMargin{
-    margin: 0;
-}
-.clear{
-    clear: both;
+#pag{
+    padding-top: 80px;
+    padding-left: 3%;
+    width: 76%;
+    min-width: 100vh;
 }

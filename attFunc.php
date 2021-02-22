@@ -18,22 +18,29 @@ function gather($connection,$query){
             $tipoE = mysqli_fetch_array(mysqli_query($connection,"SELECT Tipo  FROM `TipoEscala`  WHERE `Id` = {$r['TipoEscalaId']}"))['Tipo'];
             $tipoF = mysqli_fetch_array(mysqli_query($connection,"SELECT Nome  FROM `TipoFerias`  WHERE `Id` = {$r['TipoFeriasId']}"))['Nome'];
             echo '
-
-<li>
-'.$r['Nome'].'
-<ul>
-	<li>CPF(CRNM): '.$r['Cpf'].'</li>
-	<li>RF/RE: '.$r['RfRe'].'</li>
-	<li>COREN: '.$r['Coren'].'</li>
-	<li>Vínculo: '.$vinc.'</li>
-	<li>Categoria: '.$cat.'</li>
-	<li>Tipo de usuário: '.$tipoU.'</li>
-	<li>Condição: '.$cond.'</li>
-	<li>Setor: '.$tipoS.'</li>
-	<li>Escala: '.$tipoE.'</li>
-	<li>Férias: '.$tipoF.'</li>
-</ul>
-</li>';
+            
+            <div class="card my-3" style="width: 100%;">
+                <div class="card-header ">
+                    '.$r['Nome'].'
+                    <i class="fas fa-user-edit float-right"></i>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">CPF(CRNM): '.$r['Cpf'].'</li>
+                        <li class="list-group-item">RF/RE: '.$r['RfRe'].'</li>
+                        <li class="list-group-item">COREN: '.$r['Coren'].'</li>
+                        <li class="list-group-item">Vínculo: '.$vinc.'</li>
+                        <li class="list-group-item">Categoria: '.$cat.'</li>
+                        <li class="list-group-item">Tipo de usuário: '.$tipoU.'</li>
+                        <li class="list-group-item">Condição: '.$cond.'</li>
+                        <li class="list-group-item">Setor: '.$tipoS.'</li>
+                        <li class="list-group-item">Escala: '.$tipoE.'</li>
+                        <li class="list-group-item">Férias: '.$tipoF.'</li>
+                    </ul>
+                </div>
+            </div>
+            
+            ';
         }
     }else{
         echo "nenhuma correspondencia encontrada";
@@ -44,14 +51,6 @@ function gather($connection,$query){
 
 <html>
     <head>
-<!-- /* $ID = mysqli_real_escape_string($connection, $_POST['iCpf']);
-            $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
-            $Login = mysqli_real_escape_string($connection, $_POST['ilogin']);
-            $Senha = mysqli_real_escape_string($connection, $_POST['iSenha']);
-            $TipoUsuario= mysqli_real_escape_string($connection, $_POST['sTipoUsuario']);
-            $Setor= mysqli_real_escape_string($connection, $_POST['sSetor']);
-            $Escala= mysqli_real_escape_string($connection, $_POST['sTipoFerias']);
-            $Ferias= mysqli_real_escape_string($connection, $_POST['sTipoEscala']); */ -->
     </head>
     <body>
         <?php

@@ -6,7 +6,7 @@ $username = mysqli_real_escape_string($connection, $_POST['username']);
 $password = mysqli_real_escape_string($connection, $_POST['senha']);
 
 if (($username && $password)) {
-    $query = "SELECT Cpf, Login, TipoUsuarioId FROM `Usuario` WHERE Login = '{$username}' AND Senha = md5('{$password}')";
+    $query = "SELECT Nome, Cpf, Login, TipoUsuarioId FROM `Usuario` WHERE Login = '{$username}' AND Senha = md5('{$password}')";
     echo $query;
     $result = mysqli_query($connection, $query);
     $row = mysqli_num_rows($result);
@@ -15,6 +15,7 @@ if (($username && $password)) {
     if($row==1){
         $_SESSION['usuario'] = $username;
         $_SESSION['tipoUserId'] = $data['TipoUsuarioId'];
+        $_SESSION['nome'] = $data['Nome'];
         header('location: home.php');
         exit();
     }else{

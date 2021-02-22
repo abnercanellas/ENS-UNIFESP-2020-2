@@ -1,8 +1,7 @@
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "header.php";
-   include_once("header.php");
-   include('verifyAuthentication.php');
+   $path .= "newHeader.php";
+   include_once("newHeader.php");
    
    $required_level = 1; //diretoria
    if($_SESSION['tipoUserId'] != $required_level) {
@@ -17,18 +16,25 @@
     <head>
         <title>Historico - Escalas</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="styles/styles.css">
     </head>
     <body>
-        <div id="pag">
-            <div id="conteudo"><!-- conteudo -->
+        <div class="container-fluid">
+            <div class="row">
+                    <div id="menu" class="bg-a1 shadow-sm sidebar-sticky">
+                        <?php
+                            require_once('menu.php');
+                        ?>
+                    </div>
+                <div id="pag">
+                    <div id="conteudo"><!-- conteudo -->
 
-                <div id="dHistorico">    
-                    Historico de presenças do usuário logado
+                        <div id="dHistorico">    
+                            Historico de presenças do usuário logado
+                        </div>
+
+                    </div>
                 </div>
-
             </div>
-            <span class="clear"></span>
         </div>
     </body>
 </html>

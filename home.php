@@ -1,8 +1,7 @@
 <?php 
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $path .= "header.php";
-    include_once("header.php");
-    include('verifyAuthentication.php')
+    $path .= "newHeader.php";
+    include_once("newHeader.php");
 ?>
 
 <html>
@@ -12,14 +11,23 @@
         <link rel="stylesheet" href="styles/styles.css">
     </head>
     <body>
-        <div id="pag">
-            <div id="conteudo"><!-- conteudo -->
-                <div id="dEscala">
-                    Aqui ficará a escala base do setor da pessoa logada e informações gerais
+        <div class="container-fluid">
+            <div class="row">
+                <div id="menu" class="bg-a1 shadow-sm sidebar-sticky">
+                    <?php
+                        require_once('menu.php');
+                    ?>
+                </div>
+                <div id="pag">
+                    <div id="conteudo"><!-- conteudo -->
+                        <div id="dEscala">
+                            Aqui ficará a escala base do setor da pessoa logada e informações gerais
 
+                        </div>
+                    </div>
+                    <span class="clear"></span>
                 </div>
             </div>
-            <span class="clear"></span>
         </div>
     </body>
 </html>
