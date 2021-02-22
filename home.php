@@ -24,7 +24,10 @@
                     <div id="conteudo"><!-- conteudo -->
                         <div id="dEscala">
 			    <?php
-                            $query="SELECT c.ano, c.mes, c.dia, c.HoraInicio, c.HoraFim FROM celula c WHERE c.UsuarioId='{$_SESSION['usuario']}' ORDER BY c.ano, c.mes, c.dia";
+			    date_default_timezone_set('America/Sao_Paulo');
+			    $ano_atual = date('Y');
+			    $mes_atual = date('n');
+                            $query="SELECT c.ano, c.mes, c.dia, c.HoraInicio, c.HoraFim FROM celula c WHERE c.ano = $ano_atual AND c.mes = $mes_atual AND c.UsuarioId='{$_SESSION['usuario']}' ORDER BY c.ano, c.mes, c.dia";
 			    $s = mysqli_query($connection, $query) or die(mysqli_error($connection));                                
                                 while($r=mysqli_fetch_array($s)){
 				                    $ano=$r['ano'];
