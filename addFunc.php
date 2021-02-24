@@ -150,6 +150,8 @@ switch ($TipoCadastro) {
         $Nome = mysqli_real_escape_string($connection, $_POST['iNomeUsuario']);
         $Login = mysqli_real_escape_string($connection, $_POST['iCpf']);
         $Senha = '123456';
+        $Hora_entrada = mysqli_real_escape_string($connection, $_POST['iHoraEntrada']);
+        $Hora_saida = mysqli_real_escape_string($connection, $_POST['iHoraSaida']);
         $VinculoId = mysqli_real_escape_string($connection, $_POST['sVinculo']);
         $CategoriaId = mysqli_real_escape_string($connection, $_POST['sCategoria']);
         $TipoUsuarioId = mysqli_real_escape_string($connection, $_POST['sTipoUsuario']);
@@ -183,7 +185,7 @@ switch ($TipoCadastro) {
         }
         // inserindo dados na tabela Usuario
         else{
-            $query = "INSERT INTO `Usuario` (`Cpf`, `RfRe`, `Coren`, `Nome`, `Login`, `Senha`, `VinculoId`, `CategoriaId`, `TipoUsuarioId`, `CondicaoId`, `SetorId`, `TipoEscalaId`, `TipoFeriasId`) VALUES ('{$Cpf}', '{$RfRe}', '{$Coren}', '{$Nome}', '{$Login}', md5('{$Senha}'), '{$VinculoId}', '{$CategoriaId}', '{$TipoUsuarioId}', '{$CondicaoId}', '{$SetorId}', '{$TipoEscalaId}', '{$TipoFeriasId}')";  
+            $query = "INSERT INTO `Usuario` (`Cpf`, `RfRe`, `Coren`, `Nome`, `Login`, `Senha`, `HoraEntrada`, `HoraSaida`, `VinculoId`, `CategoriaId`, `TipoUsuarioId`, `CondicaoId`, `SetorId`, `TipoEscalaId`, `TipoFeriasId`) VALUES ('{$Cpf}', '{$RfRe}', '{$Coren}', '{$Nome}', '{$Login}', md5('{$Senha}'), '{$Hora_entrada}', '{$Hora_saida}', '{$VinculoId}', '{$CategoriaId}', '{$TipoUsuarioId}', '{$CondicaoId}', '{$SetorId}', '{$TipoEscalaId}', '{$TipoFeriasId}')";  
             $result = mysqli_query($connection, $query);
             alert('O usuário '.$Nome.' foi cadastrado com sucesso!.\nLogin: '.$Login.'\nSenha:'.$Senha.'\nA senha é gerada automaticamente e deve ser alterada pelo usuário.', 'cadastra.php');
         }

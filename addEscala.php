@@ -106,6 +106,14 @@
                             $cont = $dayinit;
                             for($i=0; $i<$nDays;$i++){
                                 $g = mysqli_query($connection,"SELECT * FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
+                                if(mysqli_num_rows($g)==0){
+                                    $cont2 = $dayinit;
+                                    for($i=0; $i<$nDays;$i++){
+                                     mysqli_query($connection,"INSERT INTO `Celula` (`DataC`, `HoraInicio`, `HoraFim`, `EscalasId`, `UsuarioId`, `SetorId`) VALUES ('$cont2', '{$user['HoraEntrada']}', '{$user['HoraSaida']}', {$idescala['Id']}, '{$user['Cpf']}', $set)") ;
+                                        $cont2=strftime("%Y-%m-%d", strtotime("$cont2 +1 day"));
+                                    }
+                                }
+                                $g = mysqli_query($connection,"SELECT * FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
                                 $h = mysqli_fetch_array($g);
                                 $j = $h['TipoPresencaId']==NULL ?  8 : $h['TipoPresencaId'];
                                 $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$j}"));

@@ -155,6 +155,14 @@
                                                     <input class="form-control" id="idiCoren" name="iCoren" type="text" placeholder="123456">
                                                 </div>
                                                 <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="iHoraEntrada">Horário de Entrada: </label>
+                                                    <input class="form-control" id="idiHoraEntrada" name="iHoraEntrada" type="text" placeholder="08:00">
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="iHoraSaida">Horário de Saída: </label>
+                                                    <input class="form-control" id="idiHoraSaida" name="iHoraSaida" type="text" placeholder="17:00">
+                                                </div>
+                                                <div class="input-group mb-3">
                                                     <label class="input-group-text" for="sVinculo">Vínculo: </label> <!-- select vinculo -->
                                                     <select class="form-select" name="sVinculo" id="idsVinculo">
                                                         <?php $s=mysqli_query($connection,"SELECT * FROM `Vinculo` ORDER BY Vinc");
