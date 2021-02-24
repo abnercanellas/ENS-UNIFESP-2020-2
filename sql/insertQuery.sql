@@ -63,14 +63,14 @@ INSERT INTO TipoFerias (Nome, Duracao) VALUES ('Integral', 30);
 INSERT INTO TipoFerias (Nome, Duracao) VALUES ('Metade', 15);
 
 
-INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
-VALUES ('11122233344', 1234567, 1112223, 'Maria Alice Silva', '11122233344', MD5('123456'), 1, 2, 1, 1, 1, 1, 1);
+INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, HoraEntrada, HoraSaida, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
+VALUES ('11122233344', 1234567, 1112223, 'Maria Alice Silva', '11122233344', MD5('123456'), '06:30:00.000000', '15:30:00.000000', 1, 2, 1, 1, 1, 1, 1);
 
-INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
-VALUES ('22233344455', 2345678, 2223334, 'Carlos Ferreira', '22233344455', MD5('123456'), 1, 1, 3, 1, 2, 3, 1);
+INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, HoraEntrada, HoraSaida, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
+VALUES ('22233344455', 2345678, 2223334, 'Carlos Ferreira', '22233344455', MD5('123456'), '11:00:00.000000', '23:00:00.000000', 1, 1, 3, 1, 2, 3, 1);
 
-INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
-VALUES ('33344455566', 3456789, 3334445, 'Geovana Nascimento', '33344455566', MD5('123456'), 1, 1, 4, 1, 2, 3, 2);
+INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, HoraEntrada, HoraSaida, VinculoId, CategoriaId, TipoUsuarioId, CondicaoId, SetorId, TipoEscalaId, TipoFeriasId)
+VALUES ('33344455566', 3456789, 3334445, 'Geovana Nascimento', '33344455566', MD5('123456'), '05:00:00.000000', '17:00:00.000000', 1, 1, 4, 1, 2, 3, 2);
 
 
 INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('X', 'Presente');
