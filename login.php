@@ -7,7 +7,6 @@ $password = mysqli_real_escape_string($connection, $_POST['senha']);
 
 if (($username && $password)) {
     $query = "SELECT Nome, Cpf, Login, TipoUsuarioId FROM `Usuario` WHERE Login = '{$username}' AND Senha = md5('{$password}')";
-    echo $query;
     $result = mysqli_query($connection, $query);
     $row = mysqli_num_rows($result);
     $data = mysqli_fetch_assoc($result);

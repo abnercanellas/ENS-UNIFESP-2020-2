@@ -1,4 +1,3 @@
-USE insertion;
 
 INSERT INTO Acesso (Id, Tipo) VALUES (1, 'Total');
 INSERT INTO Acesso (Id, Tipo) VALUES (2, 'Chamada e consulta');
@@ -73,7 +72,7 @@ INSERT INTO Usuario (Cpf, RfRe, Coren, Nome, Login, Senha, HoraEntrada, HoraSaid
 VALUES ('33344455566', 3456789, 3334445, 'Geovana Nascimento', '33344455566', MD5('123456'), '05:00:00.000000', '17:00:00.000000', 1, 1, 4, 1, 2, 3, 2);
 
 
-INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('--', null);
+INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('--', "");
 INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('X', 'Presente');
 INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('F', 'Folga');
 INSERT INTO TipoPresenca (Sigla, Tipo) VALUES ('FF', 'Folga Feriado');

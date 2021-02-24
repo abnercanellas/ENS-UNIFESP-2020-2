@@ -4,13 +4,14 @@
     //Host: us-cdbr-east-03.cleardb.com
     //port: 3306
     ///heroku_c12980461cab3cd?reconnect=true
+    //u1e_y?r2<Bz6v#0c
 
     /* Usar este em localhost */
 
     define('HOST', 'localhost');
     define('USER', 'root');
-    define('SENHA', '');
-    define('DB', 'insertion');
+    define('SENHA', 'u1e_y?r2<Bz6v#0c');
+    define('DB', 'id16240752_insertion');
     $connection = mysqli_connect(HOST,USER,SENHA,DB) or die('Não foi possivel conectar');
    
 

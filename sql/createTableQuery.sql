@@ -1,6 +1,3 @@
-CREATE DATABASE insertion;
-USE insertion;
-
 CREATE TABLE Acesso(
 Id integer(10),
 Tipo varchar(255) NOT NULL UNIQUE,
