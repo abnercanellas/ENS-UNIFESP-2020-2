@@ -8,11 +8,18 @@
 
     /* Usar este em localhost */
 
+    /* define('HOST', 'localhost');
+    define('USER', 'root');
+    define('SENHA', '');
+    define('DB', 'insertion');
+    $connection = mysqli_connect(HOST,USER,SENHA,DB) or die('Não foi possivel conectar'); */
+
     define('HOST', 'localhost');
     define('USER', 'root');
     define('SENHA', 'u1e_y?r2<Bz6v#0c');
     define('DB', 'id16240752_insertion');
-    $connection = mysqli_connect(HOST,USER,SENHA,DB) or die('Não foi possivel conectar');
+    define('PORT', '3306');
+    $connection = mysqli_connect(HOST,USER,SENHA,DB,PORT) or die('Não foi possivel conectar');
    
 
 
