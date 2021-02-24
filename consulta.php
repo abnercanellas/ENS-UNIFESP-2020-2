@@ -1,6 +1,5 @@
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "newHeader.php";
    include_once("newHeader.php");
    include_once("connection.php");
 ?>

@@ -100,12 +100,13 @@
                             ";
                             $cont = $dayinit;
                             for($i=0; $i<$nDays;$i++){
-                                $g = mysqli_query($connection,"SELECT `TipoPresencaId` FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
+                                $g = mysqli_query($connection,"SELECT * FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
                                 $h = mysqli_fetch_array($g);
-                                $h = $h['TipoPresencaId']==NULL ?  8 : $h['TipoPresencaId'];
-                                $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$h}"));
+                                $j = $h['TipoPresencaId']==NULL ?  8 : $h['TipoPresencaId'];
+                                $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$j}"));
                                 ?>
-                                <td><?php echo $t['Sigla']?></td> 
+                                
+                                <td><button id="<?php $h['Id'] ?>" class="btn" data-toggle="modal" data-target="#modal1" style="color: Dodgerblue;" onclick=><?php echo $t['Sigla']?></button></td> 
                                 <?php
                                 $cont=strftime("%Y-%m-%d", strtotime("$cont +1 day"));
                                 
@@ -118,6 +119,36 @@
                     ?>
                 </table>
             </div>
+            <div class="modal fade" id="modal1">
+                                <div class="modal-dialog">
+                                    <form action="attCelula.php" method="POST">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Editar </h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="input-group mb-3">
+                                                    <label class="input-group-text" for="sPresenca">Presença: </label> <!-- select vinculo -->
+                                                    <select class="form-select" name="sPresenca" id="isPresenca">
+                                                    
+                                                        <?php $s=mysqli_query($connection,"SELECT * FROM `tipopresenca` ORDER BY `tipopresenca`.`Tipo` ASC");
+                                                            while($r = mysqli_fetch_array($s)){ ?>
+                                                                <option value="<?php echo $r['Id']?>"><?php echo $r['Id'].'-'.$r['Tipo'];?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <label for="">9<?php $k ?></label>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <input class="btn btn-primary" type="submit"  value="Marcar" name="formCadastra" id="idformCadastra">
+                                                <input type="hidden" name="idCels" value="<?php $k ?>">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
         <?php endif; ?>
     </body>
 </html>
