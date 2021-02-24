@@ -116,7 +116,6 @@
                                 $g = mysqli_query($connection,"SELECT * FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
                                 $h = mysqli_fetch_array($g);
                                 $j = $h['TipoPresencaId']==NULL ?  1 : $h['TipoPresencaId'];
-                                echo "SELECT `Sigla` FROM `TipoPresenca` WHERE `Id`= {$j}";
                                 $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `TipoPresenca` WHERE `Id`= {$j}"));
                                 echo "
                                     <td>
