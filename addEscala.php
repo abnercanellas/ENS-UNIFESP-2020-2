@@ -1,55 +1,27 @@
 <?php
-
-function alert($msg, $page) {
-    echo ("<script LANGUAGE='JavaScript'>
-            window.alert('$msg');
-            window.location.href='$page';
-        </script>");
-}
-
-function gather($connection,$query){
-    $s=mysqli_query($connection,$query);
-    if(mysqli_num_rows($s)>0){
-        
-            
-        
-        while($r = mysqli_fetch_array($s)){
-            $vinc  = mysqli_fetch_array(mysqli_query($connection,"SELECT Vinc  FROM `Vinculo`     WHERE `Id` = {$r['VinculoId']}"))['Vinc'];
-            $cat   = mysqli_fetch_array(mysqli_query($connection,"SELECT Cat   FROM `Categoria`   WHERE `Id` = {$r['CategoriaId']}"))['Cat'];
-            $tipoU = mysqli_fetch_array(mysqli_query($connection,"SELECT Tipo  FROM `TipoUsuario` WHERE `Id` = {$r['TipoUsuarioId']}"))['Tipo'];
-            $cond  = mysqli_fetch_array(mysqli_query($connection,"SELECT Cond  FROM `Condicao`    WHERE `Id` = {$r['CondicaoId']}"))['Cond'];
-            $tipoS = mysqli_fetch_array(mysqli_query($connection,"SELECT Nome  FROM `Setor`       WHERE `Id` = {$r['SetorId']}"))['Nome'];
-            $tipoE = mysqli_fetch_array(mysqli_query($connection,"SELECT Tipo  FROM `TipoEscala`  WHERE `Id` = {$r['TipoEscalaId']}"))['Tipo'];
-            $tipoF = mysqli_fetch_array(mysqli_query($connection,"SELECT Nome  FROM `TipoFerias`  WHERE `Id` = {$r['TipoFeriasId']}"))['Nome'];
-            echo '
-            
-            <div class="card my-3" style="width: 100%;">
-                <div class="card-header ">
-                    '.$r['Nome'].'
-                    <i class="fas fa-user-edit float-right"></i>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">CPF(CRNM): '.$r['Cpf'].'</li>
-                        <li class="list-group-item">RF/RE: '.$r['RfRe'].'</li>
-                        <li class="list-group-item">COREN: '.$r['Coren'].'</li>
-                        <li class="list-group-item">Vínculo: '.$vinc.'</li>
-                        <li class="list-group-item">Categoria: '.$cat.'</li>
-                        <li class="list-group-item">Tipo de usuário: '.$tipoU.'</li>
-                        <li class="list-group-item">Condição: '.$cond.'</li>
-                        <li class="list-group-item">Setor: '.$tipoS.'</li>
-                        <li class="list-group-item">Escala: '.$tipoE.'</li>
-                        <li class="list-group-item">Férias: '.$tipoF.'</li>
-                    </ul>
-                </div>
-            </div>
-            
-            ';
+    function initialDate(){
+        date_default_timezone_set('America/Sao_Paulo');
+        $d = date("d", time());
+        $day = date("Y-m-d", time());
+        if($d <= 15) {
+            $day=strftime("%Y-%m-%d", strtotime("$day -1 month"));
         }
-    }else{
-        echo "nenhuma correspondencia encontrada";
+        $day=strftime("%Y-%m-%d", strtotime("$day -$d day"));
+        $day=strftime("%Y-%m-%d", strtotime("$day +16 day"));
+        return $day;
     }
-}
+    
+    function finalDate(){
+        date_default_timezone_set('America/Sao_Paulo');
+        $d = date("d", time());
+        $day = date("Y-m-d", time());
+        if($d >= 16) {
+            $day=strftime("%Y-%m-%d", strtotime("$day +1 month"));
+        }
+        $day=strftime("%Y-%m-%d", strtotime("$day -$d day"));
+        $day=strftime("%Y-%m-%d", strtotime("$day +15 day"));
+        return $day;
+    }
 ?>
 
 
@@ -57,21 +29,95 @@ function gather($connection,$query){
     <head>
     </head>
     <body>
-        <?php
-        
-            if(isset($_POST['eSetor']) && isset($_POST['eTipoEscala'])){
-                $set = mysqli_real_escape_string($connection, $_POST['eSetor']);
-                $esc = mysqli_real_escape_string($connection, $_POST['eTipoEscala']);
-            
-                $query_user = "SELECT * FROM `Usuario` WHERE `SetorId` = '{$set}' AND `TipoEscalaId` = '{$esc}'";
-                $s = mysqli_query($connection, $query_user);
-                
-                while($r = mysqli_fetch_array($s)){
-                    print_r($r);
-                    echo "<br><br>";
-                }
-                
-            }
-        ?> 
+        <?php if(isset($_POST['eSetor']) && isset($_POST['eTipoEscala'])): ?>
+            <div id="idTabela">
+                <table style="width:100%">
+                    <tr>
+                        <th>RF/RE</th>
+                        <th>Nome</th>
+                        <th>Cat.</th>
+                        <th>COREN</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <?php
+                            $nDays = 0;
+                            $dayinit = initialDate();
+                            $dayend = finalDate();
+                            $dayend = strftime("%Y-%m-%d", strtotime("$dayend +1 day"));
+                            while($dayinit != $dayend){
+                                $d = DateTime::createFromFormat("Y-m-d", $dayinit);?>
+                                <th><?php echo $d->format("d") ?></th>
+                                <?php
+                                $dayinit=strftime("%Y-%m-%d", strtotime("$dayinit +1 day"));
+                                $nDays++;
+                            }
+                        ?>
+                    </tr>
+                    
+                    <?php
+                    $set = mysqli_real_escape_string($connection, $_POST['eSetor']);
+                    $esc = mysqli_real_escape_string($connection, $_POST['eTipoEscala']);
+                    
+                    $dayinit=initialDate();
+                    $query_escala = "SELECT Id FROM `Escalas` WHERE `DataInicio` = '{$dayinit}'";
+                    $e = mysqli_query($connection, $query_escala);
+                    $idescala = mysqli_fetch_array($e);
+                    
+                    if(mysqli_num_rows($e) == 0){
+                        $query_create = "INSERT INTO `Escalas` ( `DataInicio`, `DataFim`) VALUES ('{$dayinit}', '{$dayend}');";
+                        mysqli_query($connection,$query_create);
+                        $ce = mysqli_query($connection, $query_escala);
+                        $idescala = mysqli_fetch_array($ce);
+                        $qu = "SELECT Cpf FROM `Usuario`";
+                        $nu = mysqli_query($connection, $qu);
+                        while($nc = mysqli_fetch_array($nu)){
+                            $cont = $dayinit;
+                            for($i=0; $i<$nDays;$i++){
+                                mysqli_query($connection,"INSERT INTO `Celula` (`DataC`, `HoraInicio`, `HoraFim`, `EscalasId`, `UsuarioId`, `SetorId`) VALUES ('$cont', '06:30:00.000000', '15:30:00.000000', {$idescala['Id']}, '{$nc['Cpf']}', $set)") ;
+                                $cont=strftime("%Y-%m-%d", strtotime("$cont +1 day"));
+                            }
+                        }
+                    }
+                    $query_user = "SELECT * FROM `Usuario` WHERE `SetorId` LIKE '{$set}' AND `TipoEscalaId` LIKE '{$esc}'";
+                    $nUser = mysqli_query($connection, $query_user);
+                    if(mysqli_num_rows(mysqli_query($connection, $query_user)) > 0){
+                        while($user = mysqli_fetch_array($nUser)){
+                            $rfre = $user['RfRe'];
+                            $nome = $user['Nome'];
+                            $cat = mysqli_fetch_array(mysqli_query($connection,"SELECT Sigla FROM `Categoria` WHERE `Id` = {$user['CategoriaId']}"))['Sigla'];
+                            $coren = $user['Coren'];
+                            $entrada =  mysqli_fetch_array(mysqli_query($connection,"SELECT HoraInicio FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `EscalasId` = '{$idescala['Id']}' AND `DataC` = '{$dayinit}'"))['HoraInicio'];
+                            $saida =  mysqli_fetch_array(mysqli_query($connection,"SELECT HoraFim FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `EscalasId` = '{$idescala['Id']}' AND `DataC` = '{$dayinit}'"))['HoraFim'];
+                            $entrada = substr($entrada,0,5);
+                            $saida = substr($saida,0,5);
+                            echo "<tr>
+                            <td>$rfre</td>
+                            <td>$nome</td>
+                            <td>$cat</td>
+                            <td>$coren</td>
+                            <td>$entrada</td>
+                            <td>$saida</td>
+                            ";
+                            $cont = $dayinit;
+                            for($i=0; $i<$nDays;$i++){
+                                $g = mysqli_query($connection,"SELECT `TipoPresencaId` FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
+                                $h = mysqli_fetch_array($g);
+                                $h = $h['TipoPresencaId']==NULL ?  8 : $h['TipoPresencaId'];
+                                $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$h}"));
+                                ?>
+                                <td><?php echo $t['Sigla']?></td> 
+                                <?php
+                                $cont=strftime("%Y-%m-%d", strtotime("$cont +1 day"));
+                                
+                            }
+                            echo '</tr>';
+                        }
+                    }else{
+                        echo "Nenhum funcionário na escala selecionanda.\n";
+                    }
+                    ?>
+                </table>
+            </div>
+        <?php endif; ?>
     </body>
 </html>
