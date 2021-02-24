@@ -27,6 +27,11 @@
 
 <html>
     <head>
+        <script>
+            function myId(h){
+                document.getElementById('teste').value = parseInt(document.getElementById(h).id);
+            }
+        </script>
     </head>
     <body>
         <?php if(isset($_POST['eSetor']) && isset($_POST['eTipoEscala'])): ?>
@@ -104,12 +109,12 @@
                                 $h = mysqli_fetch_array($g);
                                 $j = $h['TipoPresencaId']==NULL ?  8 : $h['TipoPresencaId'];
                                 $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$j}"));
-                                ?>
-                                
-                                <td><button id="<?php $h['Id'] ?>" class="btn" data-toggle="modal" data-target="#modal1" style="color: Dodgerblue;" onclick=><?php echo $t['Sigla']?></button></td> 
-                                <?php
+                                echo "
+                                    <td>
+                                        <button id='{$h['Id']}' onclick='myId(this.id)' class='btn' data-toggle='modal' data-target='#modal1' style='width: 100%; color: Dodgerblue;'>{$t['Sigla']}</button>
+                                    </td>
+                                ";
                                 $cont=strftime("%Y-%m-%d", strtotime("$cont +1 day"));
-                                
                             }
                             echo '</tr>';
                         }
@@ -117,8 +122,10 @@
                         echo "Nenhum funcionário na escala selecionanda.\n";
                     }
                     ?>
+                    
                 </table>
             </div>
+        <?php endif; ?>
             <div class="modal fade" id="modal1">
                                 <div class="modal-dialog">
                                     <form action="attCelula.php" method="POST">
@@ -134,21 +141,19 @@
                                                     
                                                         <?php $s=mysqli_query($connection,"SELECT * FROM `tipopresenca` ORDER BY `tipopresenca`.`Tipo` ASC");
                                                             while($r = mysqli_fetch_array($s)){ ?>
-                                                                <option value="<?php echo $r['Id']?>"><?php echo $r['Id'].'-'.$r['Tipo'];?></option>
+                                                                <option value="<?php echo $r['Id']?>"><?php echo $r['Tipo'];?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-                                                <label for="">9<?php $k ?></label>
                                             </div>
                                             <div class="modal-footer">
+                                                <input id="teste" type="hidden" name="idCels" value="">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 <input class="btn btn-primary" type="submit"  value="Marcar" name="formCadastra" id="idformCadastra">
-                                                <input type="hidden" name="idCels" value="<?php $k ?>">
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-        <?php endif; ?>
     </body>
 </html>
