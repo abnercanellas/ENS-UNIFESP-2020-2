@@ -283,6 +283,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <input type="hidden" name="sTipoCadastro" value="2">
                                                 <input class="btn btn-primary" type="submit"  value="Cadastrar" name="formCadastra" id="idformCadastra">
                                             </div>
                                         </div>
@@ -305,8 +306,8 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <input type="hidden" name="sTipoCadastro" value="0">
                                                 <input class="btn btn-primary" type="submit"  value="Cadastrar" name="formCadastra" id="idformCadastra">
-                                                <input type="hidden" name="sTipoCadastro" value="2">
                                             </div>
                                         </div>
                                     </form>

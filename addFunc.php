@@ -31,7 +31,7 @@ switch ($TipoCadastro) {
         $Categoria = mysqli_real_escape_string($connection, $_POST['iCategoria']);
         $SiglaCat = mysqli_real_escape_string($connection, $_POST['iSiglaCat']);
 
-        $query = "SELECT * FROM `Categoria` WHERE Cat = '{$Categoria}' OR Sigla = '{$$SiglaCat}'";
+        $query = "SELECT * FROM `Categoria` WHERE Cat = '{$Categoria}' OR Sigla = '{$SiglaCat}'";
         $row = mysqli_num_rows(mysqli_query($connection, $query));
         
         if($row > 0) {

@@ -116,7 +116,8 @@
                                 $g = mysqli_query($connection,"SELECT * FROM `Celula` WHERE `UsuarioId` = '{$user['Cpf']}' AND `DataC` = '{$cont}'");
                                 $h = mysqli_fetch_array($g);
                                 $j = $h['TipoPresencaId']==NULL ?  1 : $h['TipoPresencaId'];
-                                $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `tipopresenca` WHERE `Id`= {$j}"));
+                                echo "SELECT `Sigla` FROM `TipoPresenca` WHERE `Id`= {$j}";
+                                $t = mysqli_fetch_array(mysqli_query($connection,"SELECT `Sigla` FROM `TipoPresenca` WHERE `Id`= {$j}"));
                                 echo "
                                     <td>
                                         <button id='{$h['Id']}' onclick='myId(this.id)' class='btn' data-toggle='modal' data-target='#modal1' style='width: 100%; color: Dodgerblue;'>{$t['Sigla']}</button>
@@ -147,7 +148,7 @@
                                                     <label class="input-group-text" for="sPresenca">Presença: </label> <!-- select vinculo -->
                                                     <select class="form-select" name="sPresenca" id="isPresenca">
                                                     
-                                                        <?php $s=mysqli_query($connection,"SELECT * FROM `tipopresenca` ORDER BY `tipopresenca`.`Tipo` ASC");
+                                                        <?php $s=mysqli_query($connection,"SELECT * FROM `TipoPresenca` ORDER BY `TipoPresenca`.`Tipo` ASC");
                                                             while($r = mysqli_fetch_array($s)){ ?>
                                                                 <option value="<?php echo $r['Id']?>"><?php echo $r['Tipo'];?></option>
                                                         <?php } ?>

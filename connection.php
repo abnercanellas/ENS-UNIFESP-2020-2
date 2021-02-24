@@ -4,7 +4,10 @@
     //Host: us-cdbr-east-03.cleardb.com
     //port: 3306
     ///heroku_c12980461cab3cd?reconnect=true
-    //u1e_y?r2<Bz6v#0c
+    // OvRAlcc6Gn
+    // Database: insertion_1
+    // Username: abnercanellas_1
+    // Email: abnercanellas@gmail.com
 
     /* Usar este em localhost */
 
@@ -14,10 +17,10 @@
     define('DB', 'insertion');
     $connection = mysqli_connect(HOST,USER,SENHA,DB) or die('Não foi possivel conectar'); */
 
-    define('HOST', 'localhost');
-    define('USER', 'root');
-    define('SENHA', 'u1e_y?r2<Bz6v#0c');
-    define('DB', 'id16240752_insertion');
+    define('HOST', 'remotemysql.com');
+    define('USER', 's9aMtIbeoZ');
+    define('SENHA', 'OvRAlcc6Gn');
+    define('DB', 's9aMtIbeoZ');
     define('PORT', '3306');
     $connection = mysqli_connect(HOST,USER,SENHA,DB,PORT) or die('Não foi possivel conectar');
    
