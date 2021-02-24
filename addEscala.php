@@ -73,12 +73,12 @@
                         mysqli_query($connection,$query_create);
                         $ce = mysqli_query($connection, $query_escala);
                         $idescala = mysqli_fetch_array($ce);
-                        $qu = "SELECT Cpf FROM `Usuario`";
+                        $qu = "SELECT Cpf, HoraEntrada, HoraSaida FROM `Usuario`";
                         $nu = mysqli_query($connection, $qu);
                         while($nc = mysqli_fetch_array($nu)){
                             $cont = $dayinit;
                             for($i=0; $i<$nDays;$i++){
-                                mysqli_query($connection,"INSERT INTO `Celula` (`DataC`, `HoraInicio`, `HoraFim`, `EscalasId`, `UsuarioId`, `SetorId`) VALUES ('$cont', '06:30:00.000000', '15:30:00.000000', {$idescala['Id']}, '{$nc['Cpf']}', $set)") ;
+                                mysqli_query($connection,"INSERT INTO `Celula` (`DataC`, `HoraInicio`, `HoraFim`, `EscalasId`, `UsuarioId`, `SetorId`) VALUES ('$cont', '{$nc['HoraEntrada']}', '{$nc['HoraSaida']}', {$idescala['Id']}, '{$nc['Cpf']}', $set)") ;
                                 $cont=strftime("%Y-%m-%d", strtotime("$cont +1 day"));
                             }
                         }
