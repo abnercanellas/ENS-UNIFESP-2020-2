@@ -54,7 +54,7 @@
                                             }else{
                                                 $query = "UPDATE Usuario SET Senha=md5('{$_POST['novaSenha']}') WHERE Login = {$_SESSION['usuario']}";
                                                 $result = mysqli_query($connection, $query);
-                                                echo 'Senha "'.$_POST['novaSenha'].'" alterada com sucesso!';
+                                                echo 'Senha alterada com sucesso!';
                                             }
                                         }else{?>
                                             <div class="mb-3 text-danger">
