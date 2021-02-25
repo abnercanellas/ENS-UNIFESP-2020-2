@@ -52,7 +52,7 @@
                                                 </div>
                                 <?php
                                             }else{
-                                                $query = "UPDATE usuario SET Senha=md5('{$_POST['novaSenha']}') WHERE Login = {$_SESSION['usuario']}";
+                                                $query = "UPDATE Usuario SET Senha=md5('{$_POST['novaSenha']}') WHERE Login = {$_SESSION['usuario']}";
                                                 $result = mysqli_query($connection, $query);
                                                 echo 'Senha "'.$_POST['novaSenha'].'" alterada com sucesso!';
                                             }
